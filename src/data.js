@@ -11,7 +11,7 @@ export const DATA = [
         img: 'https://st2.depositphotos.com/1359043/6531/i/950/depositphotos_65311411-stock-photo-blue-color-tropical-butterfly.jpg',
         text: 'butterfly text for second post',
         date: new Date().toJSON(),
-        booked: true
+        booked: false
     },
     {
         id: '3',
