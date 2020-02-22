@@ -1,2 +1,2 @@
 # react-native-blognote
-react native, redux, RN navigation 5, firebase
+react native, redux, React navigation 5, firebase
