@@ -13,8 +13,10 @@ import { BookedScreen } from '../screens/BookedScreen'
 import { CreateScreen } from '../screens/CreateScreen'
 import { THEME } from '../theme'
 
-const PostNavigator = createStackNavigator();
-const BookedNavigator = createStackNavigator();
+const PostNavigator = createStackNavigator()
+const AboutNavigator = createStackNavigator()
+const CreateNavigator = createStackNavigator()
+const BookedNavigator = createStackNavigator()
 const BottomNavigator = 
   Platform.OS === 'android' 
     ? createMaterialBottomTabNavigator()
@@ -34,6 +36,24 @@ function MyPostNavigator() {
           <PostNavigator.Screen name="Post" component={ PostScreen } options={PostScreen.navigationOptions}/>
           <PostNavigator.Screen name="About" component={ AboutScreen } />
         </PostNavigator.Navigator>
+  )
+}
+
+function MyAboutNavigator() {
+  return (
+    <AboutNavigator.Navigator initialRouteName={AboutScreen} 
+    screenOptions={navigatorOptions}>
+        <AboutNavigator.Screen name="About" component={ AboutScreen }  />
+      </AboutNavigator.Navigator>
+  )
+}
+
+function MyCreateNavigator() {
+  return (
+    <CreateNavigator.Navigator initialRouteName={CreateScreen} 
+    screenOptions={navigatorOptions}>
+        <CreateNavigator.Screen name="Create" component={ CreateScreen }  />
+      </CreateNavigator.Navigator>
   )
 }
 
@@ -116,10 +136,32 @@ function MyBottomNavigator() {
 
 function MyDrawer(){
   return (
-    <MainNavigator.Navigator>
-      <MainNavigator.Screen name='PostTabs' component={MyBottomNavigator} />
-      <MainNavigator.Screen name='About' component={AboutScreen} />
-      <MainNavigator.Screen name='Create' component={CreateScreen} />
+    <MainNavigator.Navigator
+      drawerContentOptions={{
+          activeTintColor: THEME.MAIN_COLOR,
+          itemStyle: { marginVertical: 1 },
+          labelStyle: {
+            fontFamily: 'open-bold'
+          }
+    }}
+    >
+      <MainNavigator.Screen 
+        name='PostTabs' 
+        component={MyBottomNavigator} 
+        options={{ drawerLabel: 'Главная'}}
+        />
+      <MainNavigator.Screen 
+        name='About' 
+        component={MyAboutNavigator} 
+        options={{ drawerLabel: 'О приложении'}}
+        />
+      <MainNavigator.Screen 
+        name='Create' 
+        component={MyCreateNavigator} 
+        options={{ drawerLabel: 'Новый пост'
+        //drawerIcon: (focused) => (<Ionicons name={'ios-add-circle-outline'} />) 
+        }}
+        />
     </MainNavigator.Navigator>
   )
 }

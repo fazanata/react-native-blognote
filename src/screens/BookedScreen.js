@@ -16,7 +16,7 @@ export const BookedScreen = ({navigation}) => {
                 <Item 
                     title='Toggle drawer' 
                     iconName='ios-menu' 
-                    onPress={() => console.log('Press menu')}
+                    onPress={() => navigation.toggleDrawer()}
                 />
             </HeaderButtons>
         ),
